@@ -3,7 +3,50 @@
 
 {% block container %}
 
-<h1>http://127.0.0.1:5000/{{short_url_display}}</h1>
+<style>
+    h1{
+        text-align: center;
+    }
+    .copy-link{
+    display: flex;
+    width: 250px;
+    text-align: right;
+    padding:10px;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.return{
+    text-align: center;
+    margin-right: 7rem;
+}
+
+
+</style>
+
+<div class="copy-link">
+<input type="text" class="copy-link-input" size="35" value="http://127.0.0.1:5000/{{short_url_display}}">
+    <button type="button" class="copy-link-button">
+        <span class="material-icons">content_copy</span>
+    </button>
+    
+</div>
+<div class="return">
+    <a href="http://127.0.0.1:5000/"><b>BACK TO HOME</b></a>
+</div>
 <br>
-<a href="http://127.0.0.1:5000/"><b>BACK TO HOME</b></a>
+
+<script>
+    document.querySelectorAll(".copy-link").forEach(copyLinkContainer =>{
+    const inputField = copyLinkContainer.querySelector(".copy-link-input");
+    const copyButton = copyLinkContainer.querySelector(".copy-link-button");
+    const text = inputField.value;
+    inputField.addEventListener("focus", () => inputField.select())
+    copyButton.addEventListener("click", () => {
+        inputField.select()
+        navigator.clipboard.writeText(text);
+        } )
+});
+</script>
+
 {% endblock %}

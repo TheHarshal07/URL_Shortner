@@ -16,3 +16,15 @@
     margin-right: auto;
     
 }
+h1{
+    text-align: center;
+}
+.copy-link{
+display: flex;
+width: 250px;
+size: 3;
+text-align: right;
+padding:10px
+}
+
+
